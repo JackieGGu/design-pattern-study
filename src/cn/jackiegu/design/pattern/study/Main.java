@@ -2,6 +2,11 @@ package cn.jackiegu.design.pattern.study;
 
 import cn.jackiegu.design.pattern.study.simple.factory.Operation;
 import cn.jackiegu.design.pattern.study.simple.factory.OperationFactory;
+import cn.jackiegu.design.pattern.study.uml.Climate;
+import cn.jackiegu.design.pattern.study.uml.DonaldDuck;
+import cn.jackiegu.design.pattern.study.uml.Oxygen;
+import cn.jackiegu.design.pattern.study.uml.Penguin;
+import cn.jackiegu.design.pattern.study.uml.Water;
 
 /**
  * 主测试类
@@ -14,7 +19,8 @@ public class Main {
      * 主测试函数
      */
     public static void main(String[] args) {
-        simpleFactoryTest();
+        // simpleFactoryTest();
+        umlTest();
     }
 
     /**
@@ -30,5 +36,33 @@ public class Main {
         operationDiv.setNumberA(1);
         operationDiv.setNumberB(0);
         System.out.println(operationDiv.getResult());
+    }
+
+    /**
+     * UML图测试
+     */
+    public static void umlTest() {
+        DonaldDuck donaldDuck = new DonaldDuck();
+        System.out.println(donaldDuck.life);
+        System.out.println(donaldDuck.feather);
+        System.out.println(donaldDuck.hornyBeakWithoutTeeth);
+        donaldDuck.metabolism(new Oxygen(), new Water());
+        donaldDuck.reproduce();
+        donaldDuck.getWing();
+        donaldDuck.layEggs();
+        donaldDuck.speak();
+
+        System.out.println("===============================");
+
+        Penguin penguin = new Penguin();
+        System.out.println(penguin.life);
+        System.out.println(penguin.feather);
+        System.out.println(penguin.hornyBeakWithoutTeeth);
+        penguin.metabolism(new Oxygen(), new Water());
+        penguin.reproduce();
+        penguin.getWing();
+        penguin.layEggs();
+        penguin.setClimate(new Climate());
+        penguin.getClimate();
     }
 }
