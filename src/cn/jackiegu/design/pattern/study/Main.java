@@ -24,7 +24,7 @@ public class Main {
     }
 
     /**
-     * 简单工厂类测试
+     * 简单工厂模式测试
      */
     public static void simpleFactoryTest() {
         Operation operationAdd = OperationFactory.getOperation("+");
@@ -43,6 +43,7 @@ public class Main {
      */
     public static void umlTest() {
         DonaldDuck donaldDuck = new DonaldDuck();
+        System.out.println("\033[94m唐老鸭: \033[0m");
         System.out.println(donaldDuck.life);
         System.out.println(donaldDuck.feather);
         System.out.println(donaldDuck.hornyBeakWithoutTeeth);
@@ -55,6 +56,7 @@ public class Main {
         System.out.println("===============================");
 
         Penguin penguin = new Penguin();
+        System.out.println("\033[94m企鹅: \033[0m");
         System.out.println(penguin.life);
         System.out.println(penguin.feather);
         System.out.println(penguin.hornyBeakWithoutTeeth);
@@ -64,5 +66,12 @@ public class Main {
         penguin.layEggs();
         penguin.setClimate(new Climate());
         penguin.getClimate();
+    }
+
+    /**
+     * 策略模式测试
+     */
+    public static void strategyTest() {
+
     }
 }
