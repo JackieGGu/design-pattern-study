@@ -3,7 +3,6 @@ package cn.jackiegu.design.pattern.study;
 import cn.jackiegu.design.pattern.study.simple.factory.Operation;
 import cn.jackiegu.design.pattern.study.simple.factory.OperationFactory;
 import cn.jackiegu.design.pattern.study.strategy.CashStrategy;
-import cn.jackiegu.design.pattern.study.strategy.CashSuper;
 import cn.jackiegu.design.pattern.study.uml.Climate;
 import cn.jackiegu.design.pattern.study.uml.DonaldDuck;
 import cn.jackiegu.design.pattern.study.uml.Oxygen;
@@ -59,8 +58,6 @@ public class Main {
         donaldDuck.layEggs();
         donaldDuck.speak();
 
-        System.out.println("===============================");
-
         Penguin penguin = new Penguin();
         logger("企鹅: ");
         System.out.println(penguin.life);
@@ -96,7 +93,7 @@ public class Main {
         System.out.println(cashReturn.getActualMoney(1000));
     }
 
-    public static void logger(String str) {
+    private static void logger(String str) {
         System.out.println("\033[94m" + str + "\033[0m");
     }
 }
