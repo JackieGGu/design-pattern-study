@@ -9,9 +9,8 @@ public class OperationDiv extends Operation {
 
     @Override
     public double getResult() {
-        double numberA = getNumberA();
-        double numberB = getNumberB();
-
+        double numberA = super.getNumberA();
+        double numberB = super.getNumberB();
         if (numberB == 0) {
             throw new RuntimeException("除数B不能为0");
         }
