@@ -32,7 +32,7 @@ public class CashReturn implements CashSuper {
      */
     @Override
     public BigDecimal acceptCash(BigDecimal money) {
-        BigDecimal divide = money.divide(moneyCondition, 0, BigDecimal.ROUND_DOWN);
-        return money.subtract(divide.multiply(moneyReturn));
+        BigDecimal divide = money.divide(this.moneyCondition, 0, BigDecimal.ROUND_DOWN);
+        return money.subtract(divide.multiply(this.moneyReturn));
     }
 }

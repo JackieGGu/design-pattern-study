@@ -26,6 +26,6 @@ public class CashRebate implements CashSuper {
      */
     @Override
     public BigDecimal acceptCash(BigDecimal money) {
-        return money.multiply(moneyRebate);
+        return money.multiply(this.moneyRebate);
     }
 }

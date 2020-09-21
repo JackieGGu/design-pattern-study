@@ -24,8 +24,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // simpleFactoryTest();
-        umlTest();
-        // strategyTest();
+        // umlTest();
+        strategyTest();
     }
 
     /**
@@ -87,10 +87,10 @@ public class Main {
 
         logger("返利收费: ");
         Map<String, Double> returnMap = new HashMap<>();
-        returnMap.put(CashStrategy.RETURN_CONDITION_KEY, 300.0);
+        returnMap.put(CashStrategy.RETURN_CONDITION_KEY, 30.0);
         returnMap.put(CashStrategy.RETURN_VAL_KEY, 10.0);
         CashStrategy cashReturn = new CashStrategy(CashStrategy.RETURN, returnMap);
-        System.out.println(cashReturn.getActualMoney(1000));
+        System.out.println(cashReturn.getActualMoney(100));
     }
 
     private static void logger(String str) {
