@@ -7,7 +7,6 @@ package cn.jackiegu.design.pattern.study.uml;
  */
 public abstract class Animal {
 
-    // 生命
     public String life = "生命";
 
     /**

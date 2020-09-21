@@ -7,12 +7,10 @@ package cn.jackiegu.design.pattern.study.uml;
  */
 public class Penguin extends Bird {
 
-    // 气候
     private Climate climate;
 
     public Climate getClimate() {
-        System.out.println(climate);
-        return climate;
+        return this.climate;
     }
 
     public void setClimate(Climate climate) {

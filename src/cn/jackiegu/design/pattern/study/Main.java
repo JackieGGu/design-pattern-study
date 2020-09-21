@@ -24,8 +24,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // simpleFactoryTest();
-        // umlTest();
-        strategyTest();
+        umlTest();
+        // strategyTest();
     }
 
     /**
@@ -52,23 +52,23 @@ public class Main {
         System.out.println(donaldDuck.life);
         System.out.println(donaldDuck.feather);
         System.out.println(donaldDuck.hornyBeakWithoutTeeth);
+        System.out.println(donaldDuck.getWing());
         donaldDuck.metabolism(new Oxygen(), new Water());
         donaldDuck.reproduce();
-        donaldDuck.getWing();
         donaldDuck.layEggs();
         donaldDuck.speak();
 
         Penguin penguin = new Penguin();
+        penguin.setClimate(new Climate());
         logger("企鹅: ");
         System.out.println(penguin.life);
         System.out.println(penguin.feather);
         System.out.println(penguin.hornyBeakWithoutTeeth);
+        System.out.println(donaldDuck.getWing());
+        System.out.println(penguin.getClimate());
         penguin.metabolism(new Oxygen(), new Water());
         penguin.reproduce();
-        penguin.getWing();
         penguin.layEggs();
-        penguin.setClimate(new Climate());
-        penguin.getClimate();
     }
 
     /**
