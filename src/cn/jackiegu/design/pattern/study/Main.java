@@ -1,5 +1,10 @@
 package cn.jackiegu.design.pattern.study;
 
+import cn.jackiegu.design.pattern.study.dip.Benz;
+import cn.jackiegu.design.pattern.study.dip.Bike;
+import cn.jackiegu.design.pattern.study.dip.Bmw;
+import cn.jackiegu.design.pattern.study.dip.Driver;
+import cn.jackiegu.design.pattern.study.dip.IDriver;
 import cn.jackiegu.design.pattern.study.simple.factory.Operation;
 import cn.jackiegu.design.pattern.study.simple.factory.OperationFactory;
 import cn.jackiegu.design.pattern.study.strategy.CashStrategy;
@@ -25,7 +30,8 @@ public class Main {
     public static void main(String[] args) {
         // simpleFactoryTest();
         // umlTest();
-        strategyTest();
+        // strategyTest();
+        DipTest();
     }
 
     /**
@@ -91,6 +97,20 @@ public class Main {
         returnMap.put(CashStrategy.RETURN_VAL_KEY, 10.0);
         CashStrategy cashReturn = new CashStrategy(CashStrategy.RETURN, returnMap);
         System.out.println(cashReturn.getActualMoney(100));
+    }
+
+    /**
+     * 依赖倒置原则测试
+     */
+    public static void DipTest() {
+        IDriver tom = new Driver(new Benz());
+        logger("tom: ");
+        tom.driver();
+        tom.changeCar(new Bike());
+        tom.driver();
+        IDriver jerry = new Driver(new Bmw());
+        logger("jerry: ");
+        jerry.driver();
     }
 
     private static void logger(String str) {
