@@ -10,6 +10,6 @@ public class Man implements Human {
 
     @Override
     public void run() {
-        System.out.println();
+        System.out.println("学习技能");
     }
 }

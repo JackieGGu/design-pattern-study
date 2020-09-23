@@ -1,5 +1,9 @@
 package cn.jackiegu.design.pattern.study;
 
+import cn.jackiegu.design.pattern.study.decorator.Human;
+import cn.jackiegu.design.pattern.study.decorator.IronManDecorator;
+import cn.jackiegu.design.pattern.study.decorator.Man;
+import cn.jackiegu.design.pattern.study.decorator.SuperManDecorator;
 import cn.jackiegu.design.pattern.study.dip.Benz;
 import cn.jackiegu.design.pattern.study.dip.Bike;
 import cn.jackiegu.design.pattern.study.dip.Bmw;
@@ -31,7 +35,8 @@ public class Main {
         // simpleFactoryTest();
         // umlTest();
         // strategyTest();
-        DipTest();
+        // DipTest();
+        decoratorTest();
     }
 
     /**
@@ -111,6 +116,20 @@ public class Main {
         IDriver jerry = new Driver(new Bmw());
         logger("jerry: ");
         jerry.driver();
+    }
+
+    /**
+     * 装饰模式测试
+     */
+    public static void decoratorTest() {
+        Human human = new Man();
+        Human superMan = new SuperManDecorator(human);
+        logger("超人: ");
+        superMan.run();
+
+        Human ironMan = new IronManDecorator(superMan);
+        logger("钢铁侠: ");
+        ironMan.run();
     }
 
     private static void logger(String str) {
