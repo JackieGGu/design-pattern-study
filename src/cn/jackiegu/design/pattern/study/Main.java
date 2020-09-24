@@ -9,6 +9,8 @@ import cn.jackiegu.design.pattern.study.dip.Bike;
 import cn.jackiegu.design.pattern.study.dip.Bmw;
 import cn.jackiegu.design.pattern.study.dip.Driver;
 import cn.jackiegu.design.pattern.study.dip.IDriver;
+import cn.jackiegu.design.pattern.study.proxy.stc.ProxySubject;
+import cn.jackiegu.design.pattern.study.proxy.stc.RealSubject;
 import cn.jackiegu.design.pattern.study.simple.factory.Operation;
 import cn.jackiegu.design.pattern.study.simple.factory.OperationFactory;
 import cn.jackiegu.design.pattern.study.strategy.CashStrategy;
@@ -36,7 +38,8 @@ public class Main {
         // umlTest();
         // strategyTest();
         // DipTest();
-        decoratorTest();
+        // decoratorTest();
+        staticProxyTest();
     }
 
     /**
@@ -130,6 +133,15 @@ public class Main {
         Human ironMan = new IronManDecorator(superMan);
         logger("钢铁侠: ");
         ironMan.run();
+    }
+
+    /**
+     * 静态代理测试
+     */
+    public static void staticProxyTest() {
+        RealSubject realSubject = new RealSubject();
+        ProxySubject proxySubject = new ProxySubject(realSubject);
+        proxySubject.request();
     }
 
     private static void logger(String str) {
