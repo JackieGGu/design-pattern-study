@@ -9,6 +9,9 @@ import cn.jackiegu.design.pattern.study.dip.Bike;
 import cn.jackiegu.design.pattern.study.dip.Bmw;
 import cn.jackiegu.design.pattern.study.dip.Driver;
 import cn.jackiegu.design.pattern.study.dip.IDriver;
+import cn.jackiegu.design.pattern.study.proxy.dynamic.MyInvocationHandler;
+import cn.jackiegu.design.pattern.study.proxy.dynamic.UseServiceImpl;
+import cn.jackiegu.design.pattern.study.proxy.dynamic.UserService;
 import cn.jackiegu.design.pattern.study.proxy.stc.ProxySubject;
 import cn.jackiegu.design.pattern.study.proxy.stc.RealSubject;
 import cn.jackiegu.design.pattern.study.simple.factory.Operation;
@@ -20,6 +23,7 @@ import cn.jackiegu.design.pattern.study.uml.Oxygen;
 import cn.jackiegu.design.pattern.study.uml.Penguin;
 import cn.jackiegu.design.pattern.study.uml.Water;
 
+import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +43,8 @@ public class Main {
         // strategyTest();
         // DipTest();
         // decoratorTest();
-        staticProxyTest();
+        // staticProxyTest();
+        dynamicProxyTest();
     }
 
     /**
@@ -142,6 +147,18 @@ public class Main {
         RealSubject realSubject = new RealSubject();
         ProxySubject proxySubject = new ProxySubject(realSubject);
         proxySubject.request();
+    }
+
+    /**
+     * 动态代理测试
+     */
+    public static void dynamicProxyTest() {
+        ClassLoader classLoader = Main.class.getClassLoader();
+        Class<?>[] interfaces = {UserService.class};
+        MyInvocationHandler invocationHandler = new MyInvocationHandler(new UseServiceImpl());
+        UserService userService = (UserService)Proxy.newProxyInstance(classLoader, interfaces, invocationHandler);
+        Integer result = userService.execute(8);
+        logger("返回结果: " + result);
     }
 
     private static void logger(String str) {
