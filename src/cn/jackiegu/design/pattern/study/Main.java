@@ -12,8 +12,8 @@ import cn.jackiegu.design.pattern.study.dip.IDriver;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.MyInvocationHandler;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UseServiceImpl;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UserService;
-import cn.jackiegu.design.pattern.study.proxy.stc.ProxySubject;
-import cn.jackiegu.design.pattern.study.proxy.stc.RealSubject;
+import cn.jackiegu.design.pattern.study.proxy.stc.SubjectProxy;
+import cn.jackiegu.design.pattern.study.proxy.stc.SubjectReal;
 import cn.jackiegu.design.pattern.study.simple.factory.Operation;
 import cn.jackiegu.design.pattern.study.simple.factory.OperationFactory;
 import cn.jackiegu.design.pattern.study.strategy.CashStrategy;
@@ -144,9 +144,9 @@ public class Main {
      * 静态代理测试
      */
     public static void staticProxyTest() {
-        RealSubject realSubject = new RealSubject();
-        ProxySubject proxySubject = new ProxySubject(realSubject);
-        proxySubject.request();
+        SubjectReal object = new SubjectReal();
+        SubjectProxy proxyObject = new SubjectProxy(object);
+        proxyObject.request();
     }
 
     /**

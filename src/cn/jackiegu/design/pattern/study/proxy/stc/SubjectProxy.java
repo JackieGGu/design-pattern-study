@@ -6,18 +6,18 @@ package cn.jackiegu.design.pattern.study.proxy.stc;
  * @author JackieGu
  * @date 2020/9/24
  */
-public class ProxySubject implements Subject {
+public class SubjectProxy implements Subject {
 
-    private RealSubject realSubject;
+    private SubjectReal object;
 
-    public ProxySubject(RealSubject realSubject) {
-        this.realSubject = realSubject;
+    public SubjectProxy(SubjectReal object) {
+        this.object = object;
     }
 
     @Override
     public void request() {
         this.before();
-        realSubject.request();
+        object.request();
         this.after();
     }
 

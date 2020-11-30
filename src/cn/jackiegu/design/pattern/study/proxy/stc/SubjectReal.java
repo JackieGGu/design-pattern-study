@@ -6,7 +6,7 @@ package cn.jackiegu.design.pattern.study.proxy.stc;
  * @author JackieGu
  * @date 2020/9/24
  */
-public class RealSubject implements Subject {
+public class SubjectReal implements Subject {
 
     @Override
     public void request() {
