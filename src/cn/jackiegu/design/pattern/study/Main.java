@@ -9,7 +9,7 @@ import cn.jackiegu.design.pattern.study.dip.Bike;
 import cn.jackiegu.design.pattern.study.dip.Bmw;
 import cn.jackiegu.design.pattern.study.dip.Driver;
 import cn.jackiegu.design.pattern.study.dip.IDriver;
-import cn.jackiegu.design.pattern.study.proxy.dynamic.MyInvocationHandler;
+import cn.jackiegu.design.pattern.study.proxy.dynamic.DynamicProxyHandler;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UseServiceImpl;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UserService;
 import cn.jackiegu.design.pattern.study.proxy.stc.SubjectProxy;
@@ -153,10 +153,13 @@ public class Main {
      * 动态代理测试
      */
     public static void dynamicProxyTest() {
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         ClassLoader classLoader = Main.class.getClassLoader();
         Class<?>[] interfaces = {UserService.class};
-        MyInvocationHandler invocationHandler = new MyInvocationHandler(new UseServiceImpl());
+        UserService useService = new UseServiceImpl();
+        DynamicProxyHandler invocationHandler = new DynamicProxyHandler(useService);
         UserService userService = (UserService)Proxy.newProxyInstance(classLoader, interfaces, invocationHandler);
+        System.out.println(userService.getClass());
         Integer result = userService.execute(8);
         logger("返回结果: " + result);
     }

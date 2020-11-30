@@ -7,11 +7,11 @@ import java.lang.reflect.Method;
  * @author JackieGu
  * @date 2020/10/11
  */
-public class MyInvocationHandler implements InvocationHandler {
+public class DynamicProxyHandler implements InvocationHandler {
 
     private Object object;
 
-    public MyInvocationHandler(Object object) {
+    public DynamicProxyHandler(Object object) {
         this.object = object;
     }
 
