@@ -9,6 +9,10 @@ import cn.jackiegu.design.pattern.study.dip.Bike;
 import cn.jackiegu.design.pattern.study.dip.Bmw;
 import cn.jackiegu.design.pattern.study.dip.Driver;
 import cn.jackiegu.design.pattern.study.dip.IDriver;
+import cn.jackiegu.design.pattern.study.factory.IFactory;
+import cn.jackiegu.design.pattern.study.factory.LeiFeng;
+import cn.jackiegu.design.pattern.study.factory.UndergraduateFactory;
+import cn.jackiegu.design.pattern.study.factory.VolunteerFactory;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.DynamicProxyHandler;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UseServiceImpl;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UserService;
@@ -44,7 +48,8 @@ public class Main {
         // DipTest();
         // decoratorTest();
         // staticProxyTest();
-        dynamicProxyTest();
+        // dynamicProxyTest();
+        factoryTest();
     }
 
     /**
@@ -162,6 +167,24 @@ public class Main {
         System.out.println(userService.getClass());
         Integer result = userService.execute(8);
         logger("返回结果: " + result);
+    }
+
+    /**
+     * 工厂模式测试
+     */
+    public static void factoryTest() {
+        IFactory undergraduateFactory = new UndergraduateFactory();
+        LeiFeng tom = undergraduateFactory.createLeiFeng();
+        logger("tom: ");
+        tom.sweep();
+        LeiFeng kitty = undergraduateFactory.createLeiFeng();
+        logger("kitty: ");
+        kitty.cooking();
+
+        IFactory volunteerFactory = new VolunteerFactory();
+        LeiFeng jackie = volunteerFactory.createLeiFeng();
+        logger("jackie: ");
+        jackie.wash();
     }
 
     private static void logger(String str) {
