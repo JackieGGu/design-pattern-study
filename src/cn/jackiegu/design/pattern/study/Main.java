@@ -13,6 +13,8 @@ import cn.jackiegu.design.pattern.study.factory.IFactory;
 import cn.jackiegu.design.pattern.study.factory.LeiFeng;
 import cn.jackiegu.design.pattern.study.factory.UndergraduateFactory;
 import cn.jackiegu.design.pattern.study.factory.VolunteerFactory;
+import cn.jackiegu.design.pattern.study.prototype.Clazz;
+import cn.jackiegu.design.pattern.study.prototype.Student;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.DynamicProxyHandler;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UseServiceImpl;
 import cn.jackiegu.design.pattern.study.proxy.dynamic.UserService;
@@ -28,7 +30,9 @@ import cn.jackiegu.design.pattern.study.uml.Penguin;
 import cn.jackiegu.design.pattern.study.uml.Water;
 
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,7 +53,8 @@ public class Main {
         // decoratorTest();
         // staticProxyTest();
         // dynamicProxyTest();
-        factoryTest();
+        // factoryTest();
+        prototypeTest();
     }
 
     /**
@@ -185,6 +190,38 @@ public class Main {
         LeiFeng jackie = volunteerFactory.createLeiFeng();
         logger("jackie: ");
         jackie.wash();
+    }
+
+    /**
+     * 原型模式测试
+     */
+    public static void prototypeTest() {
+        Student ming = new Student("小明", 10, "男");
+        Student chen = ming.clone();
+        chen.setName("小陈");
+        Student hong = new Student("小红", 9, "女");
+        logger("小明: ");
+        System.out.println(ming);
+        logger("小陈: ");
+        System.out.println(chen);
+        logger("小红: ");
+        System.out.println(hong);
+
+        List<Student> students = new ArrayList<>();
+        students.add(ming);
+        students.add(chen);
+        students.add(hong);
+        Clazz clazz32 = new Clazz("三年级2班", students);
+
+        Clazz clazz33 = clazz32.deepClone();
+        clazz33.setName("三年级3班");
+        List<Student> clazz33Students = clazz33.getStudents();
+        clazz33Students.clear();
+        clazz33Students.add(new Student("小花", 8, "女"));
+        logger("三年级2班: ");
+        System.out.println(clazz32);
+        logger("三年级3班");
+        System.out.println(clazz33);
     }
 
     private static void logger(String str) {
